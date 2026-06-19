@@ -1,0 +1,404 @@
+.jb-admin-page {
+  padding-top: 1rem;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.jb-admin-header {
+  margin-bottom: 1.75rem;
+}
+
+.jb-admin-header__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+  color: var(--jb-text);
+}
+
+.jb-admin-header__sub {
+  color: var(--jb-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ── Tabs ─────────────────────────────────────────────────────────────────── */
+.jb-admin-tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--jb-border);
+  margin-bottom: 1.75rem;
+}
+
+.jb-admin-tab {
+  padding: 0.5rem 1.1rem;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--jb-text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  border-radius: 0.25rem 0.25rem 0 0;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.jb-admin-tab:hover {
+  color: var(--jb-text);
+}
+
+.jb-admin-tab--active {
+  color: var(--jb-accent);
+  border-bottom-color: var(--jb-accent);
+}
+
+/* ── Stat cards ───────────────────────────────────────────────────────────── */
+.jb-admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.jb-admin-stat {
+  background: var(--jb-surface);
+  border: 1px solid var(--jb-border);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.jb-admin-stat__value {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--jb-accent);
+  line-height: 1;
+}
+
+.jb-admin-stat__label {
+  font-size: 0.82rem;
+  color: var(--jb-text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Sections ─────────────────────────────────────────────────────────────── */
+.jb-admin-section {
+  margin-bottom: 2rem;
+}
+
+.jb-admin-section__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--jb-text);
+  margin-bottom: 1rem;
+}
+
+/* ── Bar chart ────────────────────────────────────────────────────────────── */
+.jb-admin-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.jb-admin-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.jb-admin-bar-label {
+  font-size: 0.85rem;
+  color: var(--jb-text-muted);
+  width: 90px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.jb-admin-bar-track {
+  flex: 1;
+  height: 10px;
+  background: var(--jb-border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.jb-admin-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--jb-accent);
+  min-width: 2%;
+  transition: width 0.4s ease;
+}
+
+.jb-admin-bar-fill--fulltime  { background: var(--jb-accent); }
+.jb-admin-bar-fill--parttime  { background: var(--jb-orange); }
+.jb-admin-bar-fill--remote    { background: var(--jb-green); }
+.jb-admin-bar-fill--contract  { background: var(--jb-purple); }
+
+.jb-admin-bar-count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--jb-text);
+  width: 24px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── Recent jobs list ─────────────────────────────────────────────────────── */
+.jb-admin-recent {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--jb-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.jb-admin-recent-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1.25rem;
+  background: var(--jb-surface);
+  border-bottom: 1px solid var(--jb-border);
+}
+
+.jb-admin-recent-item:last-child {
+  border-bottom: none;
+}
+
+.jb-admin-recent-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.jb-admin-recent-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--jb-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jb-admin-recent-company {
+  font-size: 0.8rem;
+  color: var(--jb-text-muted);
+}
+
+.jb-admin-recent-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.jb-admin-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.3rem;
+}
+
+.jb-admin-status--active {
+  color: var(--jb-green);
+  background: var(--jb-green-bg);
+}
+
+.jb-admin-status--paused {
+  color: var(--jb-text-muted);
+  background: var(--jb-border);
+}
+
+/* ── Badges ───────────────────────────────────────────────────────────────── */
+.jb-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.3rem;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+
+.jb-admin-badge--accent {
+  color: var(--jb-accent);
+  background: var(--jb-accent-bg);
+}
+
+.jb-admin-badge--green {
+  color: var(--jb-green);
+  background: var(--jb-green-bg);
+}
+
+.jb-admin-badge--orange {
+  color: var(--jb-orange);
+  background: var(--jb-orange-bg);
+}
+
+.jb-admin-badge--purple {
+  color: var(--jb-purple);
+  background: var(--jb-purple-bg);
+}
+
+/* ── Table ────────────────────────────────────────────────────────────────── */
+.jb-admin-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--jb-border);
+  border-radius: 0.75rem;
+}
+
+.jb-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.jb-admin-table th {
+  text-align: left;
+  padding: 0.75rem 1.1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--jb-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--jb-surface);
+  border-bottom: 1px solid var(--jb-border);
+  white-space: nowrap;
+}
+
+.jb-admin-table th:first-child { border-radius: 0.75rem 0 0 0; }
+.jb-admin-table th:last-child  { border-radius: 0 0.75rem 0 0; }
+
+.jb-admin-table td {
+  padding: 0.875rem 1.1rem;
+  color: var(--jb-text);
+  border-bottom: 1px solid var(--jb-border);
+  vertical-align: middle;
+}
+
+.jb-admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.jb-admin-table tbody tr:hover td {
+  background: color-mix(in srgb, var(--jb-surface) 50%, var(--jb-bg));
+}
+
+.jb-admin-td--bold  { font-weight: 600; }
+.jb-admin-td--muted { color: var(--jb-text-muted); }
+
+/* ── Toggle button (job active/paused) ───────────────────────────────────── */
+.jb-admin-toggle {
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.35rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.jb-admin-toggle:hover { opacity: 0.8; }
+
+.jb-admin-toggle--active {
+  color: var(--jb-green);
+  background: var(--jb-green-bg);
+  border-color: var(--jb-green);
+}
+
+.jb-admin-toggle--paused {
+  color: var(--jb-text-muted);
+  background: var(--jb-border);
+  border-color: var(--jb-border);
+}
+
+/* ── Danger button (local, not global) ───────────────────────────────────── */
+.jb-admin-btn-danger {
+  background: var(--jb-danger-bg);
+  color: var(--jb-danger);
+  border: 1px solid var(--jb-danger-border);
+  transition: opacity 0.15s ease;
+}
+
+.jb-admin-btn-danger:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.jb-admin-btn-danger:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.jb-admin-btn-sm {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+}
+
+/* ── Inline confirm ───────────────────────────────────────────────────────── */
+.jb-admin-confirm {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.jb-admin-confirm-text {
+  font-size: 0.82rem;
+  color: var(--jb-danger);
+  font-weight: 500;
+}
+
+/* ── Messages ─────────────────────────────────────────────────────────────── */
+.jb-admin-msg {
+  padding: 2rem;
+  text-align: center;
+  color: var(--jb-text-muted);
+  font-size: 0.9rem;
+}
+
+.jb-admin-msg--error {
+  color: var(--jb-danger);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .jb-admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .jb-admin-header__title {
+    font-size: 1.4rem;
+  }
+
+  .jb-admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .jb-admin-stat__value {
+    font-size: 1.6rem;
+  }
+
+  .jb-admin-bar-label {
+    width: 70px;
+    font-size: 0.8rem;
+  }
+
+  .jb-admin-recent-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,37 @@
+.jb-auth-page {
+  min-height: calc(100vh - 3.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.jb-auth-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.jb-auth-title {
+  margin-bottom: 1.5rem;
+}
+
+.jb-auth-error {
+  background: var(--jb-danger-bg);
+  border: 1px solid var(--jb-danger-border);
+  color: var(--jb-danger);
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.jb-auth-submit {
+  width: 100%;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.jb-auth-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
