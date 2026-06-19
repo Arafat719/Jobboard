@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { apiUrl } from '../utils/api.js';
 import './Dashboard.css';
 
 // ─── Utilities ────────────────────────────────────────────────────────────────
@@ -95,7 +96,7 @@ const JobFormModal = ({ job, token, onClose, onSuccess }) => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch(isEdit ? `/api/jobs/${job._id}` : '/api/jobs', {
+      const res = await fetch(apiUrl(isEdit ? `/api/jobs/${job._id}` : '/api/jobs'), {
         method: isEdit ? 'PUT' : 'POST',
         headers: jsonHeaders(token),
         body: JSON.stringify(form),
@@ -210,7 +211,7 @@ const CandidateApplications = ({ token }) => {
     let cancelled = false;
     const load = async () => {
       try {
-        const res = await fetch('/api/applications/my', { headers: bearerHeaders(token) });
+        const res = await fetch(apiUrl('/api/applications/my'), { headers: bearerHeaders(token) });
         if (!res.ok) throw new Error();
         const data = await res.json();
         if (!cancelled) setApplications(data);
@@ -279,7 +280,7 @@ const EmployerJobCard = ({ job: initial, token, onEdit, onDelete }) => {
   const handleToggleActive = async () => {
     setToggling(true);
     try {
-      const res = await fetch(`/api/jobs/${job._id}`, {
+      const res = await fetch(apiUrl(`/api/jobs/${job._id}`), {
         method: 'PUT',
         headers: jsonHeaders(token),
         body: JSON.stringify({ isActive: !job.isActive }),
@@ -298,7 +299,7 @@ const EmployerJobCard = ({ job: initial, token, onEdit, onDelete }) => {
   const handleDelete = async () => {
     setDeleting(true);
     try {
-      const res = await fetch(`/api/jobs/${job._id}`, {
+      const res = await fetch(apiUrl(`/api/jobs/${job._id}`), {
         method: 'DELETE',
         headers: bearerHeaders(token),
       });
@@ -448,7 +449,7 @@ const EmployerApplicationCard = ({ application: initial, token }) => {
     const newStatus = e.target.value;
     setUpdating(true);
     try {
-      const res = await fetch(`/api/applications/${app._id}/status`, {
+      const res = await fetch(apiUrl(`/api/applications/${app._id}/status`), {
         method: 'PUT',
         headers: jsonHeaders(token),
         body: JSON.stringify({ status: newStatus }),
@@ -535,7 +536,7 @@ const EmployerApplicationsTab = ({ jobs, token }) => {
       setError('');
       setApplications([]);
       try {
-        const res = await fetch(`/api/applications/job/${jobId}`, {
+        const res = await fetch(apiUrl(`/api/applications/job/${jobId}`), {
           headers: bearerHeaders(token),
         });
         if (!res.ok) throw new Error();
@@ -629,7 +630,7 @@ const EmployerDashboard = ({ token }) => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/jobs/my', { headers: bearerHeaders(token) });
+      const res = await fetch(apiUrl('/api/jobs/my'), { headers: bearerHeaders(token) });
       if (!res.ok) throw new Error();
       const data = await res.json();
       setJobs(data);

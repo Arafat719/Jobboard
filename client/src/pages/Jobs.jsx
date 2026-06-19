@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../utils/api.js';
 import './Jobs.css';
 
 const JOB_TYPES = ['full-time', 'part-time', 'remote', 'contract'];
@@ -67,7 +68,7 @@ const Jobs = () => {
     if (filters.type) params.set('type', filters.type);
 
     try {
-      const res = await fetch(`/api/jobs?${params}`);
+      const res = await fetch(apiUrl(`/api/jobs?${params}`));
       if (!res.ok) throw new Error('Failed to load jobs');
       const data = await res.json();
       setJobs(data.jobs);

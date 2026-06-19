@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { apiUrl } from '../utils/api.js';
 import './Home.css';
 
 const HOW_IT_WORKS = [
@@ -42,7 +43,7 @@ const Home = () => {
   useEffect(() => {
     const fetchCount = async () => {
       try {
-        const res = await fetch('/api/jobs?limit=1');
+        const res = await fetch(apiUrl('/api/jobs?limit=1'));
         if (res.ok) {
           const data = await res.json();
           setJobCount(data.total);
@@ -52,7 +53,7 @@ const Home = () => {
 
     const fetchFeatured = async () => {
       try {
-        const res = await fetch('/api/jobs?limit=6');
+        const res = await fetch(apiUrl('/api/jobs?limit=6'));
         if (res.ok) {
           const data = await res.json();
           setFeatured(data.jobs ?? []);

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { apiUrl } from '../utils/api.js';
 import './AdminDashboard.css';
 
 // ── helpers ───────────────────────────────────────────────────────────────────
@@ -249,7 +250,7 @@ export default function AdminDashboard() {
   const jobsLoadedRef = useRef(false);
 
   useEffect(() => {
-    fetch('/api/admin/stats', { headers: bearer(token) })
+    fetch(apiUrl('/api/admin/stats'), { headers: bearer(token) })
       .then((r) => r.json().then((d) => ({ ok: r.ok, d })))
       .then(({ ok, d }) => {
         if (!ok) throw new Error(d.message || 'Failed to load stats');
@@ -263,7 +264,7 @@ export default function AdminDashboard() {
     if (tab === 'users' && !usersLoadedRef.current) {
       usersLoadedRef.current = true;
       setUsersLoading(true);
-      fetch('/api/admin/users', { headers: bearer(token) })
+      fetch(apiUrl('/api/admin/users'), { headers: bearer(token) })
         .then((r) => r.json().then((d) => ({ ok: r.ok, d })))
         .then(({ ok, d }) => {
           if (!ok) throw new Error(d.message || 'Failed to load users');
@@ -276,7 +277,7 @@ export default function AdminDashboard() {
     if (tab === 'jobs' && !jobsLoadedRef.current) {
       jobsLoadedRef.current = true;
       setJobsLoading(true);
-      fetch('/api/admin/jobs', { headers: bearer(token) })
+      fetch(apiUrl('/api/admin/jobs'), { headers: bearer(token) })
         .then((r) => r.json().then((d) => ({ ok: r.ok, d })))
         .then(({ ok, d }) => {
           if (!ok) throw new Error(d.message || 'Failed to load jobs');
@@ -289,7 +290,7 @@ export default function AdminDashboard() {
 
   const handleDeleteUser = async (id) => {
     try {
-      const res = await fetch(`/api/admin/users/${id}`, {
+      const res = await fetch(apiUrl(`/api/admin/users/${id}`), {
         method: 'DELETE',
         headers: bearer(token),
       });
@@ -309,7 +310,7 @@ export default function AdminDashboard() {
       prev.map((j) => (j._id === id ? { ...j, isActive: !j.isActive } : j))
     );
     try {
-      const res = await fetch(`/api/admin/jobs/${id}/toggle`, {
+      const res = await fetch(apiUrl(`/api/admin/jobs/${id}/toggle`), {
         method: 'PUT',
         headers: bearer(token),
       });

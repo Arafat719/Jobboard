@@ -172,6 +172,48 @@ npm run preview  # Preview production build locally
 
 ---
 
+## Deployment
+
+### Backend — Render
+
+1. Create a new **Web Service** on [Render](https://render.com)
+2. Connect your repository and set:
+   - **Root directory**: `server`
+   - **Build command**: `npm install`
+   - **Start command**: `node index.js`
+3. Add the following environment variables in Render's dashboard:
+
+| Variable | Value |
+|----------|-------|
+| `MONGO_URI` | Your MongoDB Atlas connection string |
+| `JWT_SECRET` | A long, random secret (generate with `openssl rand -hex 32`) |
+| `CLIENT_URL` | Your Vercel frontend URL (e.g. `https://your-app.vercel.app`) |
+| `PORT` | Leave unset — Render sets this automatically |
+
+### Frontend — Vercel
+
+1. Import your repository on [Vercel](https://vercel.com)
+2. Set:
+   - **Root directory**: `client`
+   - **Build command**: `npm run build`
+   - **Output directory**: `dist`
+3. Add the environment variable:
+
+| Variable | Value |
+|----------|-------|
+| `VITE_API_URL` | Your Render backend URL (e.g. `https://your-api.onrender.com`) |
+
+### Local development
+
+Create `client/.env` (copy from `client/.env.example`):
+```
+VITE_API_URL=http://localhost:5000
+```
+
+The Vite dev proxy (`/api` → `http://localhost:5000`) also remains active for local dev — both approaches work simultaneously.
+
+---
+
 ## Built With
 
 - [React](https://react.dev/) — UI library

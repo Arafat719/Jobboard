@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { apiUrl } from '../utils/api.js';
 import './JobDetail.css';
 
 const TYPE_BADGE_CLASS = {
@@ -57,7 +58,7 @@ const ApplySection = ({ jobId, token, isAuthenticated, userRole, navigate }) => 
     setError('');
 
     try {
-      const res = await fetch('/api/applications', {
+      const res = await fetch(apiUrl('/api/applications'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -157,7 +158,7 @@ const JobDetail = () => {
       setNotFound(false);
 
       try {
-        const res = await fetch(`/api/jobs/${id}`);
+        const res = await fetch(apiUrl(`/api/jobs/${id}`));
         if (res.status === 404) {
           if (!cancelled) setNotFound(true);
           return;
